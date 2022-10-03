@@ -40,7 +40,8 @@ export default function Character(props) {
     // useEffect(()=>{getHome(char.homeworld)
     //     controller.abort()
     // },[visibility])
-
+    // <h3>Homeworld: {home}</h3> 
+    // <Films films={char.films} /> 
     
     return(
         <div key={char.idx}>
@@ -49,9 +50,7 @@ export default function Character(props) {
                 {visibility === "n" ? "+" : "-"}
             </Expand>
             <Info vis={visibility}>
-                {/* <Films films={char.films} /> */}
                 <h3>Birth year: {char.birth_year}</h3>
-                {/* <h3>Homeworld: {home}</h3> */}
                 <p>Height: {char.height}</p>
                 <p>Weight: {char.mass}</p>
             </Info>
