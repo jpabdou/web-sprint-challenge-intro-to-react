@@ -44,12 +44,12 @@ export default function Character(props) {
     
     return(
         <div key={char.idx}>
-            <h2>{char.name}</h2>
+            <h1>{char.name}</h1>
             <Expand onClick={visToggle}>
                 {visibility === "n" ? "+" : "-"}
             </Expand>
             <Info vis={visibility}>
-                <Films films={char.films} />
+                {/* <Films films={char.films} /> */}
                 <h3>Birth year: {char.birth_year}</h3>
                 <h3>Homeworld: {home}</h3>
                 <p>Height: {char.height}</p>
