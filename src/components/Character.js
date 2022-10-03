@@ -2,6 +2,7 @@
 import React, {useEffect, useState} from "react";
 import styled from "styled-components";
 import axios from "axios";
+import Films from "./Films";
 
 const Info = styled.span`
 padding: 2px;
@@ -24,6 +25,7 @@ export default function Character(props) {
     const {char} = props;
     const [home, setHome] = useState("");
     const [visibility, setVisibility] = useState("n")
+    const controller = new AbortController();
     
     const visToggle = () => {
         {visibility === "n" ? setVisibility("y") : setVisibility("n")}
@@ -35,7 +37,10 @@ export default function Character(props) {
             .then(res=>{setHome(res.data.name) })
             .catch(res=> console.log(`Error!! ${res}`))
     }
-    useEffect(()=>{getHome(char.homeworld)},[])
+    useEffect(()=>{getHome(char.homeworld)
+        controller.abort()
+    },[visibility])
+
     
     return(
         <div key={char.idx}>
@@ -44,6 +49,7 @@ export default function Character(props) {
                 {visibility === "n" ? "+" : "-"}
             </Expand>
             <Info vis={visibility}>
+                <Films films={char.films} />
                 <h3>Birth year: {char.birth_year}</h3>
                 <h3>Homeworld: {home}</h3>
                 <p>Height: {char.height}</p>
