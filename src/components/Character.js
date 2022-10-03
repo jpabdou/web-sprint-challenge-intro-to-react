@@ -22,25 +22,21 @@ background: #2196f3;
 
 export default function Character(props) {
     const {char} = props;
+    const [home, setHome] = useState("");
     const [visibility, setVisibility] = useState("n")
+    
     const visToggle = () => {
         {visibility === "n" ? setVisibility("y") : setVisibility("n")}
     }
 
-
-
-    async function getHome(homeQuery) {
-        const response = await axios.get(homeQuery)
-        return response.data.name
+    
+    const getHome = (homeQuery)=> {
+        axios.get(homeQuery)
+            .then(res=>{setHome(res.data.name) })
+            .catch(res=> console.log(`Error!! ${res}`))
     }
-
-    // const getHome = (homeQuery)=> {
-    //     axios.get(homeQuery)
-    //         .then(res=>{return(res.data.name) })
-    //         .catch(res=> console.log(`Error!! ${res}`))
-    // }
-    const homeWorld = useEffect(()=>{getHome(char.homeworld)},[])
-
+    useEffect(()=>{getHome(char.homeworld)},[])
+    
     return(
         <div key={char.idx}>
             <h2>{char.name}</h2>
@@ -49,7 +45,7 @@ export default function Character(props) {
             </Expand>
             <Info vis={visibility}>
                 <h3>Birth year: {char.birth_year}</h3>
-                <h3>Homeworld: {homeWorld}</h3>
+                <h3>Homeworld: {home}</h3>
                 <p>Height: {char.height}</p>
                 <p>Weight: {char.mass}</p>
             </Info>
