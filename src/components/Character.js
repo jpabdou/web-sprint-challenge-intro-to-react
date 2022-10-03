@@ -32,14 +32,14 @@ export default function Character(props) {
     }
 
     
-    const getHome = (homeQuery)=> {
-        axios.get(homeQuery)
-            .then(res=>{setHome(res.data.name) })
-            .catch(res=> console.log(`Error!! ${res}`))
-    }
-    useEffect(()=>{getHome(char.homeworld)
-        controller.abort()
-    },[visibility])
+    // const getHome = (homeQuery)=> {
+    //     axios.get(homeQuery)
+    //         .then(res=>{setHome(res.data.name) })
+    //         .catch(res=> console.log(`Error!! ${res}`))
+    // }
+    // useEffect(()=>{getHome(char.homeworld)
+    //     controller.abort()
+    // },[visibility])
 
     
     return(
@@ -51,7 +51,7 @@ export default function Character(props) {
             <Info vis={visibility}>
                 {/* <Films films={char.films} /> */}
                 <h3>Birth year: {char.birth_year}</h3>
-                <h3>Homeworld: {home}</h3>
+                {/* <h3>Homeworld: {home}</h3> */}
                 <p>Height: {char.height}</p>
                 <p>Weight: {char.mass}</p>
             </Info>
