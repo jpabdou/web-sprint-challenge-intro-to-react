@@ -22,7 +22,7 @@ const App = () => {
     <div className="App">
       <h1 className="Header">Characters</h1>
       {chars.map((char,idx)=>
-        <Character idx={idx} char={char}/>
+        <Character key={idx} char={char}/>
       )}
     </div>
   );
