@@ -1,24 +1,5 @@
 // Write your Character component here
-import React, {useEffect, useState} from "react";
-import styled from "styled-components";
-import axios from "axios";
-import Films from "./Films";
-
-const Info = styled.span`
-padding: 2px;
-margin: 0px 20px;
-
-${props => (props.vis === 'y' ? `display: block;` : `display: none;`)}
-`
-const Expand = styled.button`
-padding: 6px 10px;
-margin: 5px;
-border: none;
-border-radius: 3px;
-color: white;
-background: #2196f3;
-
-`
+import React from "react";
 
 
 export default function Character(props) {
